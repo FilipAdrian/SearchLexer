@@ -28,15 +28,17 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitStatement(GrammarParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#var_decl}.
+	 * Enter a parse tree produced by the {@code filePathDeclaration}
+	 * labeled alternative in {@link GrammarParser#var_decl}.
 	 * @param ctx the parse tree
 	 */
-	void enterVar_decl(GrammarParser.Var_declContext ctx);
+	void enterFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#var_decl}.
+	 * Exit a parse tree produced by the {@code filePathDeclaration}
+	 * labeled alternative in {@link GrammarParser#var_decl}.
 	 * @param ctx the parse tree
 	 */
-	void exitVar_decl(GrammarParser.Var_declContext ctx);
+	void exitFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code standardFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.

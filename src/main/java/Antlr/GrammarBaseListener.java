@@ -40,13 +40,13 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_decl(GrammarParser.Var_declContext ctx) { }
+	@Override public void enterFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_decl(GrammarParser.Var_declContext ctx) { }
+	@Override public void exitFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
