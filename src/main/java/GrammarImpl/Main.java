@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 //Program Code
 //Start
-//path= "C:\Users\Adrian\Desktop\Antlr\TextFile.txt";
+//path= ".\src\main\resources\TextFile.txt";
 //findLine(6);
 //findLine(27);
 //count();
@@ -14,7 +14,6 @@ public class Main {
         Scanner scanner = new Scanner (System.in);
         System.out.println ("\t Program Code ");
         String programCode = getUserProgram (scanner);
-//        System.out.println (programCode );
         GrammarCompiler compiler = new GrammarCompiler ( );
         try {
             compiler.compile (programCode);
