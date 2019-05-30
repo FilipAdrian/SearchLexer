@@ -9,9 +9,12 @@ public class GrammarCompiler {
     public void compile(String expresion) {
         CharStream stream = CharStreams.fromString (expresion);
         GrammarLexer lexer = new GrammarLexer (stream);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(DescriptiveErrorListener.INSTANCE);
         CommonTokenStream tokenStream = new CommonTokenStream (lexer);
         GrammarParser parser = new GrammarParser (tokenStream);
-        parser.setErrorHandler(new BailErrorStrategy ());
+        parser.removeErrorListeners();
+        parser.addErrorListener(DescriptiveErrorListener.INSTANCE);
         ParseTree tree = parser.program ();
         GrammarBaseVisitorImpl visitor = new GrammarBaseVisitorImpl ();
         String answer = visitor.visit (tree);
