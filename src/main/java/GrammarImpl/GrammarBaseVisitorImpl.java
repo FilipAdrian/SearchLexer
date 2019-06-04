@@ -2,10 +2,13 @@ package GrammarImpl;
 
 import Antlr.GrammarBaseVisitor;
 import Antlr.GrammarParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
+    private static Logger logger = LoggerFactory.getLogger (GrammarBaseVisitorImpl.class);
 
     private String filePath;
     private List <String> textFromFile;
@@ -24,18 +27,24 @@ public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
     @Override
     public String visitFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx) {
         filePath = ctx.getChild (3).toString ( );
-        textFromFile = TextProcessor.readFile (filePath);
+        textFromFile = FileManager.readFile (filePath);
         return super.visitFilePathDeclaration (ctx);
     }
 
     @Override
-    public String visitStandardFunction(GrammarParser.StandardFunctionContext ctx) {
-        return super.visitStandardFunction (ctx);
+    public String visitFindFunction(GrammarParser.FindFunctionContext ctx) {
+        String word = ctx.getChild (2).toString ();
+        TextProcessor.findWord (word,textFromFile);
+        return super.visitFindFunction (ctx);
     }
 
     @Override
     public String visitReplaceFunction(GrammarParser.ReplaceFunctionContext ctx) {
-        System.out.println (ctx.getText ( ));
+        String text = FileManager.readFileAsString (filePath);
+        String initialState = ctx.getChild (2).toString ();
+        String finalState = ctx.getChild (4).toString ();
+        text = TextProcessor.replace (text,initialState,finalState);
+        FileManager.writeInFile (filePath,text);
         return super.visitReplaceFunction (ctx);
     }
 
@@ -68,11 +77,6 @@ public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
             System.out.println (textFromFile.get (lineNumber-1));
         }
         return super.visitFindLineFunction (ctx);
-    }
-
-    @Override
-    public String visitStandard_func_name(GrammarParser.Standard_func_nameContext ctx) {
-        return super.visitStandard_func_name (ctx);
     }
 
     @Override

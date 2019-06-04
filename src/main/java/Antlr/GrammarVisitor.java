@@ -30,12 +30,12 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code standardFunction}
+	 * Visit a parse tree produced by the {@code findFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStandardFunction(GrammarParser.StandardFunctionContext ctx);
+	T visitFindFunction(GrammarParser.FindFunctionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code replaceFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.
@@ -64,12 +64,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#standard_func_name}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStandard_func_name(GrammarParser.Standard_func_nameContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#special_symbol}.
 	 * @param ctx the parse tree

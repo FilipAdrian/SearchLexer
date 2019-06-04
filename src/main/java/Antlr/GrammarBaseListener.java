@@ -52,13 +52,13 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStandardFunction(GrammarParser.StandardFunctionContext ctx) { }
+	@Override public void enterFindFunction(GrammarParser.FindFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStandardFunction(GrammarParser.StandardFunctionContext ctx) { }
+	@Override public void exitFindFunction(GrammarParser.FindFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -107,18 +107,6 @@ public class GrammarBaseListener implements GrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFindLineFunction(GrammarParser.FindLineFunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStandard_func_name(GrammarParser.Standard_func_nameContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStandard_func_name(GrammarParser.Standard_func_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -20,13 +20,40 @@
         </plugins>
     </build>
     <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
-    <dependency>
-        <groupId>org.antlr</groupId>
-        <artifactId>antlr4-runtime</artifactId>
-        <version>4.7.2</version>
-    </dependency>
+        <!-- https://mvnrepository.com/artifact/org.antlr/antlr4-runtime -->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>4.7.2</version>
+        </dependency>
 
-</dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>aho-corasick-double-array-trie</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ahocorasick</groupId>
+            <artifactId>ahocorasick</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.amygdalum</groupId>
+            <artifactId>stringsearchalgorithms</artifactId>
+            <version>0.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+    </dependencies>
 
 </project>

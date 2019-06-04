@@ -17,17 +17,13 @@ var_decl
     ;
 
 func_call
-    : standard_func_name LPAREN ALPHA  RPAREN SEMICOLON                             #standardFunction
+    : FIND LPAREN ALPHA  RPAREN SEMICOLON                                           #findFunction
     | REPLACE LPAREN ALPHA COMMA ALPHA RPAREN SEMICOLON                             #replaceFunction
     | LOOK_FOR LPAREN (special_symbol* ALPHA special_symbol*)+ RPAREN SEMICOLON     #lookFunction
     | COUNT LPAREN  RPAREN SEMICOLON                                                #countFunction
     | FINDL LPAREN DIGIT RPAREN SEMICOLON                                           #findLineFunction
     ;
 
-standard_func_name
-    :FIND
-    |FINDR
-    ;
 
 special_symbol
     :('^'|'?'|'<'|'>'|'|'|'*'|'['|']')
@@ -51,9 +47,6 @@ FIND
 
 FINDL
     :'findLine'
-    ;
-FINDR
-    :'findRepetition'
     ;
 
 REPLACE
@@ -89,9 +82,9 @@ EQUAL
     : '='
     ;
 WS
-//   : [ \t\r\n]+ -> skip
-   :(' '|'\t'|'\n'|'r')+ -> skip
+   :(' '|'\t'|'\n'|'\r')+ -> skip
    ;
+
 
 DIGIT
     : [0-9]+

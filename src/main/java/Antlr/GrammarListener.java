@@ -40,17 +40,17 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitFilePathDeclaration(GrammarParser.FilePathDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code standardFunction}
+	 * Enter a parse tree produced by the {@code findFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterStandardFunction(GrammarParser.StandardFunctionContext ctx);
+	void enterFindFunction(GrammarParser.FindFunctionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code standardFunction}
+	 * Exit a parse tree produced by the {@code findFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitStandardFunction(GrammarParser.StandardFunctionContext ctx);
+	void exitFindFunction(GrammarParser.FindFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code replaceFunction}
 	 * labeled alternative in {@link GrammarParser#func_call}.
@@ -99,16 +99,6 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GrammarParser#standard_func_name}.
-	 * @param ctx the parse tree
-	 */
-	void enterStandard_func_name(GrammarParser.Standard_func_nameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GrammarParser#standard_func_name}.
-	 * @param ctx the parse tree
-	 */
-	void exitStandard_func_name(GrammarParser.Standard_func_nameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#special_symbol}.
 	 * @param ctx the parse tree

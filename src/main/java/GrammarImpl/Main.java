@@ -7,7 +7,7 @@ import java.util.Scanner;
 //path= ".\src\main\resources\TextFile.txt";
 //findLine(6);
 //findLine(27);
-//count();
+//count()
 //End
 public class Main {
     public static void main(String[] args) {
@@ -18,8 +18,7 @@ public class Main {
         try {
             compiler.compile (programCode);
         } catch (Exception e) {
-            System.out.println ("Insert correct program syntax");
-            System.out.println (e.getMessage ( ));
+            e.printStackTrace ();
         }
         scanner.close ( );
     }
