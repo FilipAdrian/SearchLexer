@@ -17,22 +17,32 @@ var_decl
     ;
 
 func_call
-    : FIND LPAREN ALPHA  RPAREN SEMICOLON                                           #findFunction
+    : find LPAREN ALPHA  RPAREN SEMICOLON                                           #findFunction
     | REPLACE LPAREN ALPHA COMMA ALPHA RPAREN SEMICOLON                             #replaceFunction
     | LOOK_FOR LPAREN (special_symbol* ALPHA special_symbol*)+ RPAREN SEMICOLON     #lookFunction
     | COUNT LPAREN  RPAREN SEMICOLON                                                #countFunction
     | FINDL LPAREN DIGIT RPAREN SEMICOLON                                           #findLineFunction
     ;
 
+find
+    : FIND         #findWholeFunction
+    | PREFIX       #findByPrefix
+    | SUFFIX       #findBtSyffix
+    ;
 
 special_symbol
     :('^'|'?'|'<'|'>'|'|'|'*'|'['|']')
     ;
 
 START
-    :'Start'
+    :   'Start'
     ;
-
+PREFIX
+    : 'find.byPrefix'
+    ;
+SUFFIX
+    : 'find.bySuffix'
+    ;
 END
     : 'End'
     ;
@@ -62,7 +72,6 @@ LOOK_FOR
 LPAREN
    : '('
    ;
-
 COMMA
   : ','
   ;

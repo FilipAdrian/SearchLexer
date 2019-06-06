@@ -5,6 +5,7 @@ import Antlr.GrammarParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
@@ -33,18 +34,41 @@ public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
 
     @Override
     public String visitFindFunction(GrammarParser.FindFunctionContext ctx) {
+        String function = ctx.getChild (0).getText ( );
         String word = ctx.getChild (2).toString ();
-        TextProcessor.findWord (word,textFromFile);
+        ArrayList <String> lineWithAllMatchedWords = null;
+        switch (function) {
+            case "find":
+                TextProcessor.findWord (word,textFromFile);
+                break;
+            case "find.byPrefix":
+                 lineWithAllMatchedWords =TextProcessor.findByInText ("prefix",textFromFile,word);
+                 if (lineWithAllMatchedWords != null){
+                     for(String line : lineWithAllMatchedWords){
+                         System.out.println (line );
+                     }
+                 }
+                break;
+            case "find.bySuffix":
+                lineWithAllMatchedWords =TextProcessor.findByInText ("suffix",textFromFile,word);
+                if (lineWithAllMatchedWords != null){
+                    for(String line : lineWithAllMatchedWords){
+                        System.out.println (line );
+                    }
+                }
+                break;
+
+        }
         return super.visitFindFunction (ctx);
     }
 
     @Override
     public String visitReplaceFunction(GrammarParser.ReplaceFunctionContext ctx) {
         String text = FileManager.readFileAsString (filePath);
-        String initialState = ctx.getChild (2).toString ();
-        String finalState = ctx.getChild (4).toString ();
-        text = TextProcessor.replace (text,initialState,finalState);
-        FileManager.writeInFile (filePath,text);
+        String initialState = ctx.getChild (2).toString ( );
+        String finalState = ctx.getChild (4).toString ( );
+        text = TextProcessor.replace (text, initialState, finalState);
+        FileManager.writeInFile (filePath, text);
         return super.visitReplaceFunction (ctx);
     }
 
@@ -56,9 +80,10 @@ public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
 
     @Override
     public String visitCountFunction(GrammarParser.CountFunctionContext ctx) {
-        Integer wordNumber = 0 ;
+        logger.info (" COUNT WORD PROCESSING ... ");
+        Integer wordNumber = 0;
         Integer charCount = 0;
-        for(String line : textFromFile){
+        for (String line : textFromFile) {
             wordNumber += TextProcessor.countWordsInLine (line).get (0);
             charCount += TextProcessor.countWordsInLine (line).get (1);
         }
@@ -69,12 +94,12 @@ public class GrammarBaseVisitorImpl extends GrammarBaseVisitor <String> {
 
     @Override
     public String visitFindLineFunction(GrammarParser.FindLineFunctionContext ctx) {
-
+        logger.info (" FIND LINE PROCESSING ... ");
         String functName = ctx.getChild (0).getText ( );
         String context = ctx.getChild (2).getText ( );
         if (functName.equals ("findLine")) {
             Integer lineNumber = Integer.parseInt (context);
-            System.out.println (textFromFile.get (lineNumber-1));
+            System.out.println (textFromFile.get (lineNumber - 1));
         }
         return super.visitFindLineFunction (ctx);
     }

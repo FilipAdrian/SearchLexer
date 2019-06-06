@@ -65,6 +65,27 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code findWholeFunction}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFindWholeFunction(GrammarParser.FindWholeFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code findByPrefix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFindByPrefix(GrammarParser.FindByPrefixContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code findBtSyffix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#special_symbol}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

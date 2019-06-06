@@ -100,6 +100,42 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code findWholeFunction}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void enterFindWholeFunction(GrammarParser.FindWholeFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code findWholeFunction}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void exitFindWholeFunction(GrammarParser.FindWholeFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code findByPrefix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void enterFindByPrefix(GrammarParser.FindByPrefixContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code findByPrefix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void exitFindByPrefix(GrammarParser.FindByPrefixContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code findBtSyffix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void enterFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code findBtSyffix}
+	 * labeled alternative in {@link GrammarParser#find}.
+	 * @param ctx the parse tree
+	 */
+	void exitFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#special_symbol}.
 	 * @param ctx the parse tree
 	 */

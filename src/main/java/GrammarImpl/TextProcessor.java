@@ -1,5 +1,6 @@
 package GrammarImpl;
 
+import net.amygdalum.util.text.StringUtils;
 import org.ahocorasick.trie.Token;
 import org.ahocorasick.trie.Trie;
 import org.slf4j.Logger;
@@ -45,11 +46,12 @@ public class TextProcessor {
         return line;
     }
 
-    public static ArrayList <String> findWord(String word, List <String> text) {
+    public static void findWord(String word, List <String> text) {
+        logger.info (" FIND WORD PROCESSING ... ");
         ArrayList <String> wordOccurence = new ArrayList <> ( );
         Integer wordRepetition = 0;
         String textToBeSearch = "(?<=^|\\s)" + word + "(?=[\\s.,:;'\"!?)]|$)";
-        Pattern pattern = Pattern.compile ((textToBeSearch));
+        Pattern pattern = Pattern.compile (textToBeSearch,Pattern.CASE_INSENSITIVE);
         for (int i = 0; i < text.size ( ); i++) {
             Matcher matcher = pattern.matcher (text.get (i));
             while (matcher.find ( )) {
@@ -57,19 +59,21 @@ public class TextProcessor {
                 wordOccurence.add ("Line: " + (i + 1) + "  Limits: [" + matcher.start ( ) + " , " + matcher.end ( ) + " ]");
             }
         }
-        if (wordOccurence == null) {
-            System.out.println (" Word : " + word + ", was NOT FOUND");
+        if (wordRepetition == 0) {
+            logger.warn (" WORD : " + word + ", WAS NOT FOUND");
 
+        }else{
+            logger.info ("NUMBER OF OCCURRENCES: " + wordRepetition);
         }
-        System.out.println ("Word Repetition " + wordRepetition);
         for (String line :
                 wordOccurence) {
             System.out.println (line);
         }
-        return wordOccurence;
+
     }
 
     public static String replace(String text, String initialState, String finalSate) {
+        logger.info (" REPLACE WORD PROCESSING ... ");
         Trie trie = Trie.builder ( ).ignoreCase ( ).addKeyword (String.valueOf (initialState)).build ( );
         Collection <Token> tokens = trie.tokenize (text);
         Integer count = 0;
@@ -81,5 +85,53 @@ public class TextProcessor {
         }
         logger.info ("Number of replacement : " + count);
         return text;
+    }
+    private  static  HashMap<Integer,String> findByInLine(String type ,Integer lineNumber,String line, String word){
+        HashMap<Integer,String> wordMatches = new HashMap <> ();
+        String regex = null ;
+        if (type.equals ("prefix")){
+            regex = word+"\\w+";
+        }else{
+            regex = "\\b(\\w+(?:" + word + "))\\b";
+        }
+        Pattern p = Pattern.compile (regex,Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher (line);
+        String val = null;
+        ArrayList<String> matches = new ArrayList <> ();
+        Integer count = 0;
+        while (m.find ( )) {
+            val = m.group ( );
+            matches.add (val);
+            count ++;
+        }
+        if (val == null) {
+            return null;
+        }
+        wordMatches.put (count,"Line "+lineNumber+" :"+StringUtils.join(matches, ","));
+
+
+        return wordMatches;
+    }
+
+    public static ArrayList<String> findByInText(String type,List<String> textFromFile ,String word){
+        logger.info (" FIND BY " + type.toUpperCase ()+" PROCESSING ... ");
+        Integer count = 0;
+        HashMap<Integer,String> wordMatches = null;
+        ArrayList<String> lineWithAllMatchedWords = new ArrayList <> ();
+        for (int i = 0; i <textFromFile.size () ; i++) {
+            String line = textFromFile.get (i);
+            wordMatches = findByInLine (type,i+1,line,word);
+            if (wordMatches != null) {
+                count += (Integer)wordMatches.keySet ( ).toArray ( )[0];
+                lineWithAllMatchedWords.add ((String)wordMatches.values ().toArray ()[0]);
+            }
+        }
+        if (count == 0){
+            logger.warn ("NO WORD FOUND");
+            return null;
+        }else{
+            logger.info("TOTAL NUMBER OF MATCHES: "+ count);
+        }
+        return  lineWithAllMatchedWords;
     }
 }
