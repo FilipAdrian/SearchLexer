@@ -13,35 +13,65 @@ statement
     ;
 
 var_decl
-    : PATH EQUAL DOUBLECOUNT FILEPATH DOUBLECOUNT SEMICOLON                         #filePathDeclaration
+    : PATH EQUAL DOUBLECOUNT alpha DOUBLECOUNT SEMICOLON                            #filePathDeclaration
     ;
 
 func_call
-    : find LPAREN ALPHA  RPAREN SEMICOLON                                           #findFunction
-    | REPLACE LPAREN ALPHA COMMA ALPHA RPAREN SEMICOLON                             #replaceFunction
-    | LOOK_FOR LPAREN (special_symbol* ALPHA special_symbol*)+ RPAREN SEMICOLON     #lookFunction
+    : find LPAREN alpha  RPAREN SEMICOLON                                           #findFunction
+    | REPLACE LPAREN alpha COMMA alpha RPAREN SEMICOLON                             #replaceFunction
+    | lookFor LPAREN (expr)* RPAREN SEMICOLON                                       #lookFunction
     | COUNT LPAREN  RPAREN SEMICOLON                                                #countFunction
-    | FINDL LPAREN DIGIT RPAREN SEMICOLON                                           #findLineFunction
+    | FINDL LPAREN alpha RPAREN SEMICOLON                                           #findLineFunction
+    |  change LPAREN (expr)* COMMA (expr|White)* RPAREN SEMICOLON                           #changeFormat
     ;
 
 find
     : FIND         #findWholeFunction
-    | PREFIX       #findByPrefix
-    | SUFFIX       #findBtSyffix
+    | FIND PREFIX       #findByPrefix
+    | FIND SUFFIX       #findBySyffix
+    |FIND FRAGMENT      #findByFragment
+    ;
+expr
+    :SPECIAL_SYMBOL
+    |alpha
+    ;
+lookFor
+    :LOOK_FOR
+    | LOOK_FOR FORMAT
+    ;
+change
+    : CHANGE (CHANGE_BY_NUMBER_FORMAT|CHANGE_BY_DATE_FORMAT)
+    ;
+alpha
+    : (DIGIT|LETTER|SYMBOLS)+
     ;
 
-special_symbol
-    :('^'|'?'|'<'|'>'|'|'|'*'|'['|']')
+SPECIAL_SYMBOL
+    :('+'|'#'|'/'|'*'|'|')
     ;
-
+FORMAT
+    :'.format'
+    ;
+CHANGE
+    : 'change'
+    ;
+CHANGE_BY_NUMBER_FORMAT
+    : '.numberFormat'
+    ;
+CHANGE_BY_DATE_FORMAT
+    :   '.dateFormat'
+    ;
 START
     :   'Start'
     ;
 PREFIX
-    : 'find.byPrefix'
+    : '.byPrefix'
     ;
 SUFFIX
-    : 'find.bySuffix'
+    : '.bySuffix'
+    ;
+FRAGMENT
+    : '.byFragment'
     ;
 END
     : 'End'
@@ -91,21 +121,23 @@ EQUAL
     : '='
     ;
 WS
-   :(' '|'\t'|'\n'|'\r')+ -> skip
+   :(' '|'\t'|'\n'|'\r')+ -> channel(HIDDEN)
    ;
-
+White:' ';
 
 DIGIT
     : [0-9]+
     ;
-
-ALPHA
-    : ('a' .. 'z'|'A' .. 'Z'|'0' .. '9'|'-'|'_'|'.')+
+LETTER
+    :([a-z] | [A-Z])+
+    ;
+SYMBOLS
+    :(':'|'\\'|'/'|'-'|'_'|'.'|'-'|'_')+
     ;
 
-FILEPATH
-    : ('A'..'Z'|'a'..'z'|'0'..'9'|':'|'\\'|'/'|'-'|'_'|'.')+
-    ;
+
+
+
 
 
 

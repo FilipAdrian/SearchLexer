@@ -65,6 +65,13 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code changeFormat}
+	 * labeled alternative in {@link GrammarParser#func_call}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChangeFormat(GrammarParser.ChangeFormatContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code findWholeFunction}
 	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
@@ -79,16 +86,41 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFindByPrefix(GrammarParser.FindByPrefixContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code findBtSyffix}
+	 * Visit a parse tree produced by the {@code findBySyffix}
 	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	T visitFindBySyffix(GrammarParser.FindBySyffixContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#special_symbol}.
+	 * Visit a parse tree produced by the {@code findByFragment}
+	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSpecial_symbol(GrammarParser.Special_symbolContext ctx);
+	T visitFindByFragment(GrammarParser.FindByFragmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr(GrammarParser.ExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#lookFor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLookFor(GrammarParser.LookForContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#change}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChange(GrammarParser.ChangeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#alpha}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlpha(GrammarParser.AlphaContext ctx);
 }

@@ -1,7 +1,9 @@
-In order to build and develop a domain specific language, we should analyze how the features will look like based on functionalities that it supposed to provide. This includes which are ,s, if it will have start and end of the program and all rules that will give the possibilities to understand and write clean code.
-All SPET ,s are lowercase except two word, that define start and end of the program, which means that it is a case-sensitive language. For example Start is a , that highlight the start of the program, but start is a word, that our program will find in a text, also this means that we cannot look for Start as a search word,.
-The reserved word, are: Start, End, lookFor, find, findL, findR, count, replace. White spaces may appear only as a word, line between ,s, it is defined as one or more spaces, tabs and line-breaking. Only after , start and end can be white space, for another identifiers, space between them will be interpreted as one string, for example oldman and old man are one string, but not two for the last.
-For defining the lexer of DSL, we should make the grammar for it in a general form, which may be done by identification of all terminal and nonterminal character. In word,er to classify all of them, we divide them into two sets, after which the derivation from nonterminal in terminal will be done.
+In order to build and develop a domain specific language, we should analyze how the features 01 December 2019
+ will look like based on functionalities that it supposed to provide. This includes which are ,s, if it will have start and end of the program and all rules that will give the possibilities to understand and write clean code.
+All SPET ,s are lowercase except two WOoooRD, that define start and end of the program, which means that it is a case-sensitive language. For example Start is a , that highlight the start of the program, but start is a WORD, that our program will find in a text, also this means that we cannot look for Start as a search WORD,.
+The reserved WORD, are: Start, End, lookFor, find, findL, findR, count, replace. 201.5 White spaces 01 December 2019
+ may appear only as a WORD, line between ,s, it is defined as one or more spaces, tabs and line-breaking. Only after , start and end can be white space, for another identifiers, space between them will be interpreted as one string, for example oldman and old man are one string, but not two for the last.
+For defining the lexer of  12-12-2012 12:15 DSL, we should make the grammar for it in a general form, which may be done by identi-520.3fication of all terminal and nonterm11111inal character. In WOoRD,er to classify all of them, we divide them into two sets, after which the derivation from nonterminal in terminal will be done.
 Meta-notation:
 <program>
 
@@ -10,7 +12,7 @@ Start
 X*
 
 X+,
-
+2015-January-10
 Means program is a nonterminal.
 
 (in bold font) means that Start is a terminal / a token or a part of token
@@ -21,7 +23,9 @@ A comma-separated list of one or more x’s.
 
 Separate alternatives.
 
-
+444-233-2345
+01 December 2019
 
 Algoritmi:
 1.Procesare unui text bufferReaderToList;
+55555.6

@@ -20,7 +20,7 @@ public class FileManager {
         Scanner sc = null;
         text = bufferReaderToList (filePath, new LinkedList <> ( ));
         if (!text.isEmpty ()){
-        logger.info ("Text was read successfully");
+        logger.info ("TEXT WAS READ SUCCESSFULLY ...");
         }
 
         return text;
@@ -31,7 +31,7 @@ public class FileManager {
         try {
             data = new String (Files.readAllBytes (Paths.get (filePath)));
         } catch (IOException e) {
-            e.printStackTrace ( );
+           logger.error ("FILE WAS NOT FOUND");
         }
         return data;
     }
@@ -47,7 +47,7 @@ public class FileManager {
             }
             reader.close ( );
         } catch (IOException e) {
-            logger.error ("File Not Found \t" + e.getMessage ( ));
+            logger.error ("FILE NOT FUND \t" + e.getMessage ( ));
         }
         return list;
     }
@@ -57,9 +57,10 @@ public class FileManager {
         try {
             writer = new BufferedWriter (new FileWriter (path));
             writer.write (text);
+            logger.info ("SUCCESSFUL REPLACEMENT");
         }
         catch (IOException e) {
-            logger.error ("Write in file failed \t" + e.getMessage () );
+            logger.error ("WRITE IN FILE FAILED \t" + e.getMessage () );
         } finally {
             try {
                 writer.close ( );

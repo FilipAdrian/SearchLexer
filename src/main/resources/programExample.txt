@@ -1,0 +1,10 @@
+Start
+path= ".\src\main\resources\TextFile.txt";
+find.byPrefix(fo);
+find.bySuffix(age);
+lookFor.format(||##.);
+lookFor.format(##.);
+lookFor.format(##-##-####|##:##);
+change.numberFormat(##. , ##.##);
+change.dateFormat(##/##/####, dd|MMMM|yyyy);
+End

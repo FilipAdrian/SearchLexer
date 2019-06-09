@@ -112,6 +112,18 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterChangeFormat(GrammarParser.ChangeFormatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChangeFormat(GrammarParser.ChangeFormatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFindWholeFunction(GrammarParser.FindWholeFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -136,25 +148,73 @@ public class GrammarBaseListener implements GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFindBtSyffix(GrammarParser.FindBtSyffixContext ctx) { }
+	@Override public void enterFindBySyffix(GrammarParser.FindBySyffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFindBtSyffix(GrammarParser.FindBtSyffixContext ctx) { }
+	@Override public void exitFindBySyffix(GrammarParser.FindBySyffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSpecial_symbol(GrammarParser.Special_symbolContext ctx) { }
+	@Override public void enterFindByFragment(GrammarParser.FindByFragmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSpecial_symbol(GrammarParser.Special_symbolContext ctx) { }
+	@Override public void exitFindByFragment(GrammarParser.FindByFragmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpr(GrammarParser.ExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpr(GrammarParser.ExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLookFor(GrammarParser.LookForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLookFor(GrammarParser.LookForContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChange(GrammarParser.ChangeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChange(GrammarParser.ChangeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlpha(GrammarParser.AlphaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlpha(GrammarParser.AlphaContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

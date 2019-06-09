@@ -100,6 +100,18 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitFindLineFunction(GrammarParser.FindLineFunctionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code changeFormat}
+	 * labeled alternative in {@link GrammarParser#func_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterChangeFormat(GrammarParser.ChangeFormatContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code changeFormat}
+	 * labeled alternative in {@link GrammarParser#func_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitChangeFormat(GrammarParser.ChangeFormatContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code findWholeFunction}
 	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
@@ -124,25 +136,67 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitFindByPrefix(GrammarParser.FindByPrefixContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code findBtSyffix}
+	 * Enter a parse tree produced by the {@code findBySyffix}
 	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 */
-	void enterFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	void enterFindBySyffix(GrammarParser.FindBySyffixContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code findBtSyffix}
+	 * Exit a parse tree produced by the {@code findBySyffix}
 	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 */
-	void exitFindBtSyffix(GrammarParser.FindBtSyffixContext ctx);
+	void exitFindBySyffix(GrammarParser.FindBySyffixContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#special_symbol}.
+	 * Enter a parse tree produced by the {@code findByFragment}
+	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 */
-	void enterSpecial_symbol(GrammarParser.Special_symbolContext ctx);
+	void enterFindByFragment(GrammarParser.FindByFragmentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#special_symbol}.
+	 * Exit a parse tree produced by the {@code findByFragment}
+	 * labeled alternative in {@link GrammarParser#find}.
 	 * @param ctx the parse tree
 	 */
-	void exitSpecial_symbol(GrammarParser.Special_symbolContext ctx);
+	void exitFindByFragment(GrammarParser.FindByFragmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr(GrammarParser.ExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr(GrammarParser.ExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#lookFor}.
+	 * @param ctx the parse tree
+	 */
+	void enterLookFor(GrammarParser.LookForContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#lookFor}.
+	 * @param ctx the parse tree
+	 */
+	void exitLookFor(GrammarParser.LookForContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#change}.
+	 * @param ctx the parse tree
+	 */
+	void enterChange(GrammarParser.ChangeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#change}.
+	 * @param ctx the parse tree
+	 */
+	void exitChange(GrammarParser.ChangeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#alpha}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlpha(GrammarParser.AlphaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#alpha}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlpha(GrammarParser.AlphaContext ctx);
 }
