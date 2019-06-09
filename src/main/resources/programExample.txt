@@ -1,5 +1,6 @@
 Start
-path= ".\src\main\resources\TextFile.txt";
+path= "C:\Users\Adrian\IdeaProjects\SearchLexer\src\main\resources\TextFile.txt";
+find(word);
 find.byPrefix(fo);
 find.bySuffix(age);
 lookFor.format(||##.);

@@ -1,4 +1,4 @@
-package GrammarImpl;
+package com.GrammarImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class FileManager {
     private static Logger logger = LoggerFactory.getLogger (FileManager.class);
@@ -48,6 +50,7 @@ public class FileManager {
             reader.close ( );
         } catch (IOException e) {
             logger.error ("FILE NOT FUND \t" + e.getMessage ( ));
+            exit(1);
         }
         return list;
     }

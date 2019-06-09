@@ -1,12 +1,10 @@
 
-package GrammarImpl;
+package com.GrammarImpl;
 
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
-
-import java.util.logging.Logger;
 
 public class DescriptiveErrorListener extends BaseErrorListener {
 
